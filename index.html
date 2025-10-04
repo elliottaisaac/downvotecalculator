@@ -15,18 +15,18 @@
     </style>
   </head>
   <body>
-    <input type="text" placeholder="How many upvotes?">
-    <input type="text" placeholder="Upvote ratio (%)">
+    <input type="text" id="upvotes" placeholder="How many upvotes?">
+    <input type="text" id="ratio" placeholder="Upvote ratio (%)">
     <button onclick="CalculateDownvotes();">Calculate downvotes</button>
-    <p></p>
+    <p id="message"></p>
   </body>
   <script>
    function CalculateDownvotes(){
-        const upvotes = parseInt(document.querySelector('input').value);
-        const ratio = parseInt(document.querySelector('input:last-of-type').value) / 100;
-        const downvotes = Math.round((upvotes - upvotes * ratio) / (ratio * 2 - 1));
-        const message = document.querySelector('p');
-        if(downvotes > 0) message.innerHTML = `Post has ${downvotes} downvotes.`;
+        const upvotes = parseInt(document.getElementById('upvotes').value);
+        const ratio = parseInt(document.getElementById('ratio').value) / 100;
+        const downvotes = Math.round( (upvotes - upvotes * ratio) / (ratio * 2 - 1) );
+        const message = document.getElementById('message');
+        if(downvotes >= 0) message.innerHTML = `Post has ${downvotes} downvotes.`;
         else message.innerHTML = "Error.";
    }
   </script>
