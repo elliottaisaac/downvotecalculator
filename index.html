@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/2mVSBqP.png">
+    <title>Upvote Calculator</title>
+    <style>
+        body{background:#222222;padding:36px 64px;}
+        input,p{font-family:monospace;font-weight:bold;margin-right:6px;padding:6px 8px;font-size:133%;border-radius:4px;}
+        p{color:white;font-size:150%;font-family: sans-serif;}
+        button{background:#FF5700;color:white;padding:6px;cursor:pointer;border-radius:6px;font-family:sans-serif;font-weight:bold;}
+        button:hover{background:#9494FF;color:#545452;}
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="How many upvotes?">
+    <input type="text" placeholder="Upvote ratio (%)">
+    <button onclick="CalculateDownvotes();">Calculate downvotes</button>
+    <p></p>
+  </body>
+  <script>
+   function CalculateDownvotes(){
+        const upvotes = parseInt(document.querySelector('input').value);
+        const ratio = parseInt(document.querySelector('input:last-of-type').value) / 100;
+        const downvotes = Math.round((upvotes - upvotes * ratio) / (ratio * 2 - 1));
+        const message = document.querySelector('p');
+        if(downvotes > 0) message.innerHTML = `Post has ${downvotes} downvotes.`;
+        else message.innerHTML = "Error.";
+   }
+  </script>
+</html>
