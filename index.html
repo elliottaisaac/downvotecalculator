@@ -23,7 +23,7 @@
   <script>
    function CalculateDownvotes(){
         const upvotes = parseInt(document.getElementById('upvotes').value);
-        const ratio = parseInt(document.getElementById('ratio').value) / 100;
+        const ratio = parseFloat(document.getElementById('ratio').value) / 100;
         const downvotes = Math.round( (upvotes - upvotes * ratio) / (ratio * 2 - 1) );
         const message = document.getElementById('message');
         if(downvotes >= 0) message.innerHTML = `Post has ${downvotes} downvotes.`;
