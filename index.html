@@ -29,12 +29,12 @@
   </body>
   <script>
    function CalculateDownvotes(){
-        const upvotes = parseInt(document.getElementById('upvotes').value);
-        const ratio = parseFloat(document.getElementById('ratio').value) / 100;
-        const downvotes = Math.round( (upvotes -  ratio * upvotes) / (ratio * 2 - 1) );
-        const message = document.getElementById('message');
-        if(downvotes >= 0) message.innerHTML = `<img src="https://cdn3.emoji.gg/emojis/upvote.png">&nbsp;<span class="uv">${upvotes + downvotes}</span><br><img src="https://i.imgur.com/2mVSBqP.png">&nbsp;<span class="dv">${downvotes}</span>`;
-        else message.innerHTML = "Error.";
+      const upvotes = parseInt(document.getElementById('upvotes').value);
+      const ratio = parseFloat(document.getElementById('ratio').value) / 100;
+      const downvotes = Math.round( (upvotes -  ratio * upvotes) / (ratio * 2 - 1) );
+      const message = document.getElementById('message');
+      if(downvotes >= 0) message.innerHTML = `<img src="https://cdn3.emoji.gg/emojis/upvote.png">&nbsp;<span class="uv">${upvotes + downvotes}</span><br><img src="https://i.imgur.com/2mVSBqP.png">&nbsp;<span class="dv">${downvotes}</span>`;
+      else message.innerHTML = "Error.";
    }
   </script>
 </html>
