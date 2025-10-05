@@ -8,25 +8,32 @@
     <title>Upvote Calculator</title>
     <style>
         body{background:#222222;padding:36px 64px;}
+        h1{font-family:sans-serif;color:aliceblue;letter-spacing:-1px;}
+        h1 span{font-family:monospace;font-size:60%;letter-spacing:-2px;font-weight:normal;}
         input,p{font-family:monospace;font-weight:bold;margin-right:6px;padding:6px 8px;font-size:133%;border-radius:4px;}
-        p{color:white;font-size:150%;font-family:sans-serif;}
-        button{background:#FF5700;color:white;padding:6px;cursor:pointer;border-radius:6px;font-family:sans-serif;font-weight:bold;}
-        button:hover{background:#9494FF;color:#545452;}
+        p{color:white;font-size:150%;line-height:200%;font-weight:normal;letter-spacing:-1px;}
+        button{background:#FF5700;color:white;padding:6px;cursor:pointer;border-radius:6px;font-family:sans-serif;font-weight:bold;letter-spacing:0px;}
+        button:hover{background:#9494FF;color:#222222;}
+        span{font-size:125%;font-family:sans-serif;font-weight:bold;letter-spacing:1px;}
+        .uv{text-shadow: 1px 1px #FF5700;}
+        .dv{text-shadow: 1px 1px #9494FF;}
+        img{width:20px;}
     </style>
   </head>
   <body>
+    <h1>reddit <span>vote calculator</span></h1>
     <input type="text" id="upvotes" placeholder="How many upvotes?">
     <input type="text" id="ratio" placeholder="Upvote ratio (%)">
-    <button onclick="CalculateDownvotes();">Calculate downvotes</button>
+    <button onclick="CalculateDownvotes();">Calculate Downvotes</button>
     <p id="message"></p>
   </body>
   <script>
    function CalculateDownvotes(){
         const upvotes = parseInt(document.getElementById('upvotes').value);
         const ratio = parseFloat(document.getElementById('ratio').value) / 100;
-        const downvotes = Math.round( (upvotes - upvotes * ratio) / (ratio * 2 - 1) );
+        const downvotes = Math.round( (upvotes -  ratio * upvotes) / (ratio * 2 - 1) );
         const message = document.getElementById('message');
-        if(downvotes >= 0) message.innerHTML = `Post has ${downvotes} downvotes.`;
+        if(downvotes >= 0) message.innerHTML = `<img src="https://cdn3.emoji.gg/emojis/upvote.png"> <span class="uv">${upvotes + downvotes}</span><br><img src="https://i.imgur.com/2mVSBqP.png"> <span class="dv">${downvotes}</span>`;
         else message.innerHTML = "Error.";
    }
   </script>
